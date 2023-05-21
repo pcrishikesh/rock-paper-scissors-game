@@ -1,26 +1,48 @@
 // rock paper scissors game
 
 let items = ["stone","paper","scissors"]
+let playerSelection = ""
 
 let player_score = 0
 let computer_score = 0
+
+let playerSelectionDOM = document.querySelector('.player')
+let computerSelectionDOM = document.querySelector('.computer')
+
 
 function getComputerChoice() {
     let random = Math.floor(Math.random() * items.length)
     return items[random]
 }
 
-function playerSelection() {
-    let player_selection = prompt("select stone or paper or scissors")
-    player_selection.toLocaleLowerCase()
-    return player_selection
-}
+// add game options
+
+
+
+let btn1 = document.querySelector('.btn1').addEventListener('click',(e)=> {
+    playerSelection=e.target.innerHTML
+    console.log(playerSelection);
+    playerSelectionDOM.innerHTML = playerSelection
+})
+
+
+let btn2 = document.querySelector('.btn2').addEventListener('click',(e)=> {
+    playerSelection=e.target.innerHTML
+    console.log(playerSelection);
+    playerSelectionDOM.innerHTML = playerSelection
+})
+
+
+let btn3 = document.querySelector('.btn3').addEventListener('click',(e)=> {
+    playerSelection=e.target.innerHTML
+    console.log(playerSelection);
+    playerSelectionDOM.innerHTML = playerSelection
+})
+
 
 function gameRound(player,computer) {
-
-
     if (player == "stone" && computer == "stone") {
-        return "same"
+        return 'same'
     }
     else if (player == "paper" && computer == "paper") {
         return "same"
@@ -60,11 +82,7 @@ function gameRound(player,computer) {
 }
 
 function game() {
-
-    for (i=0;i<5;i++) {
-        gameRound(playerSelection(), getComputerChoice())
-    }
-
+    
     if ( player_score > computer_score) {
         console.log("Win, you beat the computer");
     }else if (computer_score > player_score) {
@@ -76,4 +94,3 @@ function game() {
 
 }
 
-game()
