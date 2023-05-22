@@ -23,12 +23,14 @@ let btn1 = document.querySelector('.btn1').addEventListener('click',(e)=> {
     playerSelection=e.target.innerHTML
     console.log(playerSelection);
     playerSelectionDOM.innerHTML = playerSelection
+    computerSelectionDOM.innerHTML = getComputerChoice()
 })
 
 
 let btn2 = document.querySelector('.btn2').addEventListener('click',(e)=> {
     playerSelection=e.target.innerHTML
     console.log(playerSelection);
+    computerSelectionDOM.innerHTML = getComputerChoice()
     playerSelectionDOM.innerHTML = playerSelection
 })
 
@@ -36,13 +38,14 @@ let btn2 = document.querySelector('.btn2').addEventListener('click',(e)=> {
 let btn3 = document.querySelector('.btn3').addEventListener('click',(e)=> {
     playerSelection=e.target.innerHTML
     console.log(playerSelection);
+    computerSelectionDOM.innerHTML = getComputerChoice()
     playerSelectionDOM.innerHTML = playerSelection
 })
 
 
 function gameRound(player,computer) {
     if (player == "stone" && computer == "stone") {
-        return 'same'
+        console.log("yes");
     }
     else if (player == "paper" && computer == "paper") {
         return "same"
@@ -83,6 +86,8 @@ function gameRound(player,computer) {
 
 function game() {
     
+
+    /*
     if ( player_score > computer_score) {
         console.log("Win, you beat the computer");
     }else if (computer_score > player_score) {
@@ -91,6 +96,8 @@ function game() {
     else {
         console.log("same");
     }
+
+    */
 
 }
 
