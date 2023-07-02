@@ -6,6 +6,8 @@ What i learned from this project
 
 From this project i learned that we can make any projects if we have an aim.i also learned things about if staement, functions, loops and simple score function. And i understand that their is a big struggle in every things in our world. and it can be done only with hardwork.
 
-In this project i strugglled a lot in the section of ui 
+// 02-07-2023
+
+Today i am going to start working with the ui version of rock-paper-scissor-game that i have been coding as a part of the odin project 
 
 @TheOdinProject
