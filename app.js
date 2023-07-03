@@ -1,29 +1,29 @@
 // rock paper scissors game
 
 
-let playerSelectionDOM = document.querySelector('.player')
+let playerSelectionDOM = document.querySelector('.playerSelection')
 let computerSelectionDOM = document.querySelector('.computer')
 
 
+
 let btn1 = document.querySelector('.btn1').addEventListener('click',(e)=> {
-    playerSelectionDOM.innerHTML=e.target.innerHTML
+    selection="stone"
+    playerSelectionDOM.innerHTML = selection
 })
 
 
 let btn2 = document.querySelector('.btn2').addEventListener('click',(e)=> {
-    playerSelectionDOM.innerHTML=e.target.innerHTML
+    selection="paper"
+    playerSelectionDOM.innerHTML = selection
+
 })
 
 
 let btn3 = document.querySelector('.btn3').addEventListener('click',(e)=> {
-    playerSelectionDOM.innerHTML=e.target.innerHTML
+    selection="scissors"
+    playerSelectionDOM.innerHTML = selection
+
 })
 
-function gameRound() {
-
-    if (yes) {
-        console.log("yes");
-    }else{console.log('no');}
-}
 
 gameRound()
