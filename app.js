@@ -1,7 +1,16 @@
 // rock paper scissors game
 
+// things to do 
 
-let playerSelectionDOM = document.querySelector('.playerSelection')
+/* 
+get computer choice
+get player selection
+main function parameter computer and player selection return win or lose
+create game function that will play five round
+
+*/
+
+let playerSelectionDOM = document.querySelector('.player')
 let computerSelectionDOM = document.querySelector('.computer')
 
 let selection = ["","",""]
@@ -12,35 +21,25 @@ function main() {
     onclickChange()
 }
 
-function onclickChange() {
-    document.querySelector('.btn1').addEventListener('click',(e)=> {
-        selection[0]="stone"
-        playerSelectionDOM.innerHTML = selection[0]
-    })
-    
-    
-    document.querySelector('.btn2').addEventListener('click',(e)=> {
-        selection[1]="paper"
-        playerSelectionDOM.innerHTML = selection[1]
-    
-    })
-    
-    
-    document.querySelector('.btn3').addEventListener('click',(e)=> {
-        selection[2]="scissors"
-        playerSelectionDOM.innerHTML = selection[2]
-    
-    })
+let btn1 = document.querySelector('.btn1').addEventListener('click',(e)=> {
+    playerSelectionDOM.innerHTML=e.target.innerHTML
+})
 
 
+let btn2 = document.querySelector('.btn2').addEventListener('click',(e)=> {
+    playerSelectionDOM.innerHTML=e.target.innerHTML
+})
+
+
+let btn3 = document.querySelector('.btn3').addEventListener('click',(e)=> {
+    playerSelectionDOM.innerHTML=e.target.innerHTML
+})
+
+function gameRound() {
+
+    if (yes) {
+        console.log("yes");
+    }else{console.log('no');}
 }
 
-
-for (i=0;i<selection.length;i++) {
-    selection[i] = "hi"
-    if (selection[i] == "hi") {
-        console.log('yes');
-    }else {
-        console.log('no');
-    }
-}
+gameRound()
