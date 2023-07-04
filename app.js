@@ -15,7 +15,7 @@ let computerSelectionDOM = document.querySelector('.computer')
 
 let selection = ["","",""]
 
-main()
+let options = ["rock","paper","scissors"]
 
 function main() {
     onclickChange()
@@ -26,20 +26,23 @@ let btn1 = document.querySelector('.btn1').addEventListener('click',(e)=> {
 })
 
 
-let btn2 = document.querySelector('.btn2').addEventListener('click',(e)=> {
-    playerSelectionDOM.innerHTML=e.target.innerHTML
-})
+Round(playerSelection(),getComputerChoice())
 
+function Round(player,computer){
 
 let btn3 = document.querySelector('.btn3').addEventListener('click',(e)=> {
     playerSelectionDOM.innerHTML=e.target.innerHTML
 })
 
-function gameRound() {
+    // rock
+    if (player == options[0] && computer == options[1]) {console.log('oops you lost!');}
+    else if (player == options[0] && computer == options[2]) {console.log('yee you won!');}
+    
+    // paper
+    if (player == options[1] && computer == options[0]) {console.log('yee you won!');}
+    else if (player == options[1] && computer == options[2]) {console.log('oops you lost!');}
 
-    if (yes) {
-        console.log("yes");
-    }else{console.log('no');}
+    // scissors
+    if (player == options[2] && computer == options[0]) {console.log('oops you lost!');}
+    if (player == options[2] && computer == options[1]) {console.log('yee you won!');}
 }
-
-gameRound()
