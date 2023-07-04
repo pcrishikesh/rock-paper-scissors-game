@@ -13,6 +13,8 @@ create game function that will play five round
 
 
 let options = ["rock","paper","scissors"]
+let playerwinrate = 0
+let computerwinrate = 0
 
 function getComputerChoice() {
     let random = Math.floor(Math.random() * options.length)
@@ -32,9 +34,8 @@ function playerSelection() {
     }
 }
 
-Round(playerSelection(),getComputerChoice())
 
-function Round(player,computer){
+function Round(player,computer){    
 
     // true statement
     if (player == options[0] && computer == options[0]) {console.log('oops same!');}
@@ -42,14 +43,29 @@ function Round(player,computer){
     else if (player == options[2] && computer == options[2]) {console.log('oops same!');}
 
     // rock
-    if (player == options[0] && computer == options[1]) {console.log('oops you lost!');}
-    else if (player == options[0] && computer == options[2]) {console.log('yee you won!');}
+    if (player == options[0] && computer == options[1]) {console.log('oops you lost!'); computerwinrate+=1}
+    else if (player == options[0] && computer == options[2]) {console.log('yee you won!'); playerwinrate+=1 }
     
     // paper
-    if (player == options[1] && computer == options[0]) {console.log('yee you won!');}
-    else if (player == options[1] && computer == options[2]) {console.log('oops you lost!');}
+    if (player == options[1] && computer == options[0]) {console.log('yee you won!'); playerwinrate+=1}
+    else if (player == options[1] && computer == options[2]) {console.log('oops you lost!'); computerwinrate+=1}
 
     // scissors
-    if (player == options[2] && computer == options[0]) {console.log('oops you lost!');}
-    if (player == options[2] && computer == options[1]) {console.log('yee you won!');}
+    if (player == options[2] && computer == options[0]) {console.log('oops you lost!'); computerwinrate+=1}
+    if (player == options[2] && computer == options[1]) {console.log('yee you won!'); playerwinrate+=1}
+
 }
+
+function main() {
+    for (i=0;i<3;i++) {
+        Round(playerSelection(),getComputerChoice())
+    }
+
+    console.log(`computer ${computerwinrate}`);
+    console.log(`player ${playerwinrate}`);
+    if (playerwinrate > computerwinrate) {console.log('yee you are the winner :)');}
+    else if (playerwinrate == computerwinrate) {console.log('draw game');}
+    else {console.log('oops computer has won');}
+}
+
+main()
