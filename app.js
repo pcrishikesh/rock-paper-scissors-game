@@ -1,33 +1,39 @@
 // rock paper scissors game
 
-// things to do 
-
-
-
-
 
 let options = ["rock","paper","scissors"]
+let playerSelect = ""
 let playerwinrate = 0
 let computerwinrate = 0
+
+let rock = document.querySelector('#rock')
+let paper = document.querySelector('#paper')
+let scissors = document.querySelector('#scissors')
 
 function getComputerChoice() {
     let random = Math.floor(Math.random() * options.length)
     return options[random]
 }
 
-function playerSelection() {
-    let player = prompt('select rock or paper or scissors')
+rock.addEventListener('click', ()=> {
+    playerSelect = "rock"
+})
 
-    if (player == "") {
-        return "invalid"
-    }else if (player.toLowerCase() == "rock" || player.toLowerCase() == "paper" || player.toLowerCase() == "scissors"){
-        return player.toLowerCase()   
-    }
-    else {
-        return "invalid"
-    }
+paper.addEventListener('click', ()=> {
+    playerSelect = "paper"
+})
+
+scissors.addEventListener('click', ()=> {
+    playerSelect = "scissors"
+})
+
+function playerSelection() {
+    if (playerSelect == "rock") {return options[0]}
+    else if (playerSelect == "paper") {return options[1]}
+    else if (playerSelect == "scissors") {return options[2]}
 }
 
+Round(playerSelection(), getComputerChoice())
 
 function Round(player,computer){    
 
@@ -50,17 +56,4 @@ function Round(player,computer){
 
 }
 
-function main() {
-    for (i=0;i<3;i++) {
-        Round(playerSelection(),getComputerChoice())
-    }
-
-    console.log(`computer ${computerwinrate}`);
-    console.log(`player ${playerwinrate}`);
-    if (playerwinrate > computerwinrate) {console.log('yee you are the winner :)');}
-    else if (playerwinrate == computerwinrate) {console.log('draw game');}
-    else {console.log('oops computer has won');}
-}
-
-main()
 
