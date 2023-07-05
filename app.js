@@ -5,6 +5,7 @@ let options = ["rock","paper","scissors"]
 let playerSelect = ""
 let playerwinrate = 0
 let computerwinrate = 0
+let roundplay = 0 
 
 let rock = document.querySelector('#rock')
 let paper = document.querySelector('#paper')
@@ -15,28 +16,38 @@ function getComputerChoice() {
     return options[random]
 }
 
-rock.addEventListener('click', ()=> {
-    playerSelect = "rock"
-})
 
-paper.addEventListener('click', ()=> {
-    playerSelect = "paper"
-})
+mainClick()
 
-scissors.addEventListener('click', ()=> {
-    playerSelect = "scissors"
-})
+function mainClick() {
+    rock.addEventListener('click', ()=> {
+        playerSelect = "rock"
+        Round(playerSelection(), getComputerChoice())
+        roundplay+=1
+    })
 
-function playerSelection() {
-    if (playerSelect == "rock") {return options[0]}
-    else if (playerSelect == "paper") {return options[1]}
-    else if (playerSelect == "scissors") {return options[2]}
+    paper.addEventListener('click', ()=> {
+        playerSelect = 'paper'
+        Round(playerSelection(), getComputerChoice())
+        roundplay+=1
+    })
+    
+    scissors.addEventListener('click', ()=> {
+        playerSelect = 'scissors'
+        Round(playerSelection(), getComputerChoice())
+        roundplay+=1
+    })
+
+
 }
 
-Round(playerSelection(), getComputerChoice())
 
-function Round(player,computer){    
+function playerSelection() {
+    return playerSelect
+}
 
+
+function Round(player,computer){   
     // true statement
     if (player == options[0] && computer == options[0]) {console.log('oops same!');}
     else if (player == options[1] && computer == options[1]) {console.log('oops same!');}
@@ -52,8 +63,20 @@ function Round(player,computer){
 
     // scissors
     if (player == options[2] && computer == options[0]) {console.log('oops you lost!'); computerwinrate+=1}
-    if (player == options[2] && computer == options[1]) {console.log('yee you won!'); playerwinrate+=1}
+    else if (player == options[2] && computer == options[1]) {console.log('yee you won!'); playerwinrate+=1}
+
+    if (roundplay == 5) {
+        console.log('reset');
+        if (playerwinrate > computerwinrate) {console.log('yee you are the winner');}
+        else if (playerwinrate == computerwinrate) {console.log('draw!');}
+        else {console.log('oops computer has won');}
+    }else {
+        return
+    }
 
 }
+
+
+
 
 
