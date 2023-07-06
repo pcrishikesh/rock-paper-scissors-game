@@ -5,7 +5,7 @@ let options = ["rock","paper","scissors"]
 let playerSelect = ""
 let playerwinrate = 0
 let computerwinrate = 0
-let roundplay = 0 
+let roundplay = 1
 let roundCount = 0
 
 let rock = document.querySelector('#rock')
@@ -18,6 +18,7 @@ let  comment = document.getElementById('comment')
 let result = document.getElementById('result')
 let round = document.getElementById('rounds')
 let restart = document.getElementById('restart')
+let resultContainer = document.getElementById('result-container')
 
 restart.addEventListener('click', restartDo)
 
@@ -30,13 +31,15 @@ function restartDo() {
     playerSelect = ""
     playerwinrate = 0
     computerwinrate = 0
-    roundplay = 0
+    roundplay = 1
     roundCount = 0
     player.innerHTML = ""
     computer.innerHTML = ""
     comment.innerHTML = ""
     result.innerHTML = ""
     round.innerHTML = 0
+    restart.style.display = "none"
+    resultContainer.style.display = "none"
 }
 
 mainClick()
@@ -126,14 +129,19 @@ function Round(player,computer){
 
     if (roundplay == 5) {
         restart.style.display = "block"
+        resultContainer.style.display = "flex"
         if (playerwinrate > computerwinrate) {
+            resultContainer.style.dislay = "flex"
+            
             result.innerHTML = "yee you are the winner"
         }
         else if (playerwinrate == computerwinrate) {
             result.innerHTML = "draw!"
+            resultContainer.style.dislay = "flex"
         }
         else {
             result.innerHTML = "oops computer has won"
+            resultContainer.style.dislay = "flex"
         }
     }else {
         return
