@@ -1,11 +1,5 @@
 // rock paper scissors game
 
-// things to do 
-
-
-
-
-
 let options = ["rock","paper","scissors"]
 let playerwinrate = 0
 let computerwinrate = 0
