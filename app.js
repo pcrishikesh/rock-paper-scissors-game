@@ -1,60 +1,155 @@
 // rock paper scissors game
 
 let options = ["rock","paper","scissors"]
+let playerSelect = ""
 let playerwinrate = 0
 let computerwinrate = 0
+let roundplay = 1
+let roundCount = 0
+
+let rock = document.querySelector('#rock')
+let paper = document.querySelector('#paper')
+let scissors = document.querySelector('#scissors')
+
+let player = document.getElementById('player')
+let computer = document.getElementById('computer')
+let  comment = document.getElementById('comment')
+let result = document.getElementById('result')
+let round = document.getElementById('rounds')
+let restart = document.getElementById('restart')
+let resultContainer = document.getElementById('result-container')
+
+restart.addEventListener('click', restartDo)
 
 function getComputerChoice() {
     let random = Math.floor(Math.random() * options.length)
     return options[random]
 }
 
-function playerSelection() {
-    let player = prompt('select rock or paper or scissors')
+function restartDo() {
+    playerSelect = ""
+    playerwinrate = 0
+    computerwinrate = 0
+    roundplay = 1
+    roundCount = 0
+    player.innerHTML = ""
+    computer.innerHTML = ""
+    comment.innerHTML = ""
+    result.innerHTML = ""
+    round.innerHTML = 0
+    restart.style.display = "none"
+    resultContainer.style.display = "none"
+}
 
-    if (player == "") {
-        return "invalid"
-    }else if (player.toLowerCase() == "rock" || player.toLowerCase() == "paper" || player.toLowerCase() == "scissors"){
-        return player.toLowerCase()   
-    }
-    else {
-        return "invalid"
-    }
+mainClick()
+
+function mainClick() {
+    rock.addEventListener('click', ()=> {
+        playerSelect = "rock"
+        Round(playerSelection(), getComputerChoice())
+        roundplay+=1
+        player.innerHTML = playerwinrate
+        computer.innerHTML = computerwinrate
+        roundCount++   
+        round.innerHTML = roundCount
+    })
+
+    paper.addEventListener('click', ()=> {
+        playerSelect = 'paper'
+        Round(playerSelection(), getComputerChoice())
+        roundplay+=1
+        player.innerHTML = playerwinrate
+        computer.innerHTML = computerwinrate
+        roundCount++
+        round.innerHTML = roundCount
+    })
+    
+    scissors.addEventListener('click', ()=> {
+        playerSelect = 'scissors'
+        Round(playerSelection(), getComputerChoice())
+        roundplay+=1
+        player.innerHTML = playerwinrate
+        computer.innerHTML = computerwinrate
+        roundCount++
+        round.innerHTML = roundCount
+    })
 }
 
 
-function Round(player,computer){    
+function playerSelection() {
+    return playerSelect
+}
 
+
+function Round(player,computer){   
     // true statement
-    if (player == options[0] && computer == options[0]) {console.log('oops same!');}
-    else if (player == options[1] && computer == options[1]) {console.log('oops same!');}
-    else if (player == options[2] && computer == options[2]) {console.log('oops same!');}
+    if (player == options[0] && computer == options[0]) {
+        comment.innerHTML = "oops same!"
+    }
+    else if (player == options[1] && computer == options[1]) {
+        comment.innerHTML = "oops same!"
+    }
+    else if (player == options[2] && computer == options[2]) {
+        comment.innerHTML = "oops same!"
+    }
 
     // rock
-    if (player == options[0] && computer == options[1]) {console.log('oops you lost!'); computerwinrate+=1}
-    else if (player == options[0] && computer == options[2]) {console.log('yee you won!'); playerwinrate+=1 }
+    if (player == options[0] && computer == options[1]) {
+        computerwinrate+=1
+        comment.innerHTML = "oops you lost!"
+    }
+    else if (player == options[0] && computer == options[2]) {
+        comment.innerHTML = 'yee you won!'
+        playerwinrate+=1 
+    }
     
     // paper
-    if (player == options[1] && computer == options[0]) {console.log('yee you won!'); playerwinrate+=1}
-    else if (player == options[1] && computer == options[2]) {console.log('oops you lost!'); computerwinrate+=1}
-
-    // scissors
-    if (player == options[2] && computer == options[0]) {console.log('oops you lost!'); computerwinrate+=1}
-    if (player == options[2] && computer == options[1]) {console.log('yee you won!'); playerwinrate+=1}
-
-}
-
-function main() {
-    for (i=0;i<3;i++) {
-        Round(playerSelection(),getComputerChoice())
+    if (player == options[1] && computer == options[0]) {
+        console.log('yee you won!'); 
+        comment.innerHTML = 'yee you won!'
+        playerwinrate+=1
+    }
+    else if (player == options[1] && computer == options[2]) {
+        computerwinrate+=1
+        comment.innerHTML = "oops you lost!"
     }
 
-    console.log(`computer ${computerwinrate}`);
-    console.log(`player ${playerwinrate}`);
-    if (playerwinrate > computerwinrate) {console.log('yee you are the winner :)');}
-    else if (playerwinrate == computerwinrate) {console.log('draw game');}
-    else {console.log('oops computer has won');}
+    // scissors
+    if (player == options[2] && computer == options[0]) {
+        comment.innerHTML = "oops you lost!"
+        computerwinrate+=1
+    }
+    else if (player == options[2] && computer == options[1]) {
+        console.log('yee you won!'); 
+        comment.innerHTML = 'yee you won!'
+        playerwinrate+=1
+    }
+
+
+    if (roundplay == 5) {
+        restart.style.display = "block"
+        resultContainer.style.display = "flex"
+        if (playerwinrate > computerwinrate) {
+            resultContainer.style.dislay = "flex"
+            
+            result.innerHTML = "yee you are the winner"
+        }
+        else if (playerwinrate == computerwinrate) {
+            result.innerHTML = "draw!"
+            resultContainer.style.dislay = "flex"
+        }
+        else {
+            result.innerHTML = "oops computer has won"
+            resultContainer.style.dislay = "flex"
+        }
+    }else {
+        return
+    }
+    
+
 }
 
-main()
+
+
+
 

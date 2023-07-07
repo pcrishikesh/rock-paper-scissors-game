@@ -11,4 +11,8 @@ From this project i learned that we can make any projects if we have an aim.i al
 Today i am going to start working with the ui of rps game so that it is more attractive to play.I am doing this as a part of
 the odin project.
 
+06-07-2023 
+
+I have finished the rps project and completed it's ui version also. And i am proud to do so because i thing as a beginner this is very big to me and i will continue learning
+
 @TheOdinProject
